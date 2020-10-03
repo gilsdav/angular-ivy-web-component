@@ -1,0 +1,12 @@
+<div class="chat-bob">
+  <p>
+    chat-bob works!
+  </p>
+
+  <ul>
+    <li *ngFor="let item of (list$ | async)">{{item}}</li>
+  </ul>
+
+  {{ list$ | async | json }}
+
+</div>
