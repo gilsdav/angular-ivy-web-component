@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
-import { Observable, of, BehaviorSubject } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class ChatService {
 
   private list$ = new BehaviorSubject(['elem1', 'elem2']);

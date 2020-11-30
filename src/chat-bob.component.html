@@ -1,6 +1,6 @@
 <div class="chat-bob">
   <p>
-    chat-bob works!
+    chat-bob works! {{ bob }}
   </p>
 
   <ul>
@@ -10,3 +10,19 @@
   {{ list$ | async | json }}
 
 </div>
+
+<hr/>
+
+<div>
+  <form [formGroup]="form" >
+    <input type="text" formControlName="test" />
+  </form>
+
+  {{ form.get('test').errors | json }}
+
+  {{ form.value | json }}
+</div>
+
+<app-my-component *ngIf="form.valid" [formValue]="formValue" (testEmitter)="testEmitted($event.detail)">
+  Coucou
+</app-my-component>
