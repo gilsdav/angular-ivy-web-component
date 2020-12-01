@@ -1,5 +1,6 @@
+//#region imports
 import { Component, Input, OnChanges, OnInit, SimpleChanges, ViewEncapsulation } from '@angular/core';
-import { NgForOf, NgIf, JsonPipe } from '@angular/common';
+import { NgForOf, NgIf, JsonPipe, AsyncPipe } from '@angular/common';
 import {
   FormBuilder,
   FormControlName,
@@ -16,27 +17,26 @@ import { CustomAsyncPipe } from './utils/custom-async.pipe';
 import { refreshViewOnChanges } from './utils/refresh-view-on-change.operator';
 
 import { ChatService } from './chat.service';
-import { MyComponentComponent } from './sub-component/sub-component.component';
-
+import { SubComponent } from './sub/sub.component';
+//#endregion imports
 
 const module = {
   components: [
-    MyComponentComponent
+    SubComponent
   ],
   directives: [
     NgForOf,
     NgIf,
-    FormGroupDirective,
-    FormControlName,
-    MyDefaultValueAccessor
+    // FormGroupDirective,
+    // FormControlName,
+    // MyDefaultValueAccessor
   ],
   pipes: [
     JsonPipe,
-    // AsyncPipe
-    CustomAsyncPipe
+    AsyncPipe
+    // CustomAsyncPipe
   ],
   providers: [
-    // ChatService,
     FormBuilder
   ]
 };
@@ -51,8 +51,6 @@ const module = {
 })
 export class ChatBobComponent implements OnInit, OnChanges {
 
-  // private chatService: ChatService;
-
   @Input() bob: string;
 
   public list$: Observable<string[]>;
@@ -60,20 +58,15 @@ export class ChatBobComponent implements OnInit, OnChanges {
   public formValue: any;
 
   constructor(
-    // injector: Injector
     private chatService: ChatService,
     fb: FormBuilder
   ) {
-    // const fb: FormBuilder = injector.get(FormBuilder);
-    // console.log(fb);
     this.form = fb.group({
       test: fb.control('', Validators.required)
     });
     this.form.valueChanges.pipe(
-      refreshViewOnChanges(this)
+      // refreshViewOnChanges(this)
     ).subscribe(value => this.formValue = {...value});
-    // this.chatService = injector.get(ChatService);
-    // console.log(this.chatService);
   }
 
   ngOnInit(): void {
@@ -94,24 +87,7 @@ export class ChatBobComponent implements OnInit, OnChanges {
 
 }
 
-// console.log(ChatBobComponent['ɵcmp']);
-// console.log(NgForOf['ɵdir']);
-// console.log(JsonPipe['ɵpipe']);
-
-renderCustomElement(ChatBobComponent, {
-  directives: [...module.directives, ...module.components],
-  pipes: module.pipes,
-  /*injector: Injector.create({
-    providers: [
-      {
-        provide: ChatService,
-        useClass: ChatService
-      },
-      {
-        provide: FormBuilder,
-        useClass: FormBuilder
-      }
-    ],
-    name: 'root'
-  })*/
-});
+// renderCustomElement(ChatBobComponent, {
+//   directives: [...module.directives, ...module.components],
+//   pipes: module.pipes
+// });
