@@ -23,7 +23,7 @@
   {{ form.value | json }}
 </div>
 
-<chat-sub-component *ngIf="form.valid"
+<chat-sub *ngIf="form.valid"
   [formValue]="formValue"
   (testEmitter)="testEmitted($event.detail)">
-</chat-sub-component>
+</chat-sub>
