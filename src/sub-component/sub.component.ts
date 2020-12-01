@@ -4,12 +4,12 @@ import { takeUntil } from 'rxjs/operators';
 import { ChatService } from '../chat.service';
 
 @Component({
-  selector: 'chat-sub-component',
-  templateUrl: './sub-component.component.html',
-  styleUrls: ['./sub-component.component.scss'],
+  selector: 'chat-sub',
+  templateUrl: './sub.component.html',
+  styleUrls: ['./sub.component.scss'],
   encapsulation: ViewEncapsulation.ShadowDom
 })
-export class MyComponentComponent implements OnInit, OnChanges, OnDestroy {
+export class SubComponent implements OnInit, OnChanges, OnDestroy {
 
   // private chatService: ChatService;
 

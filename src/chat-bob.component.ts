@@ -16,12 +16,12 @@ import { CustomAsyncPipe } from './utils/custom-async.pipe';
 import { refreshViewOnChanges } from './utils/refresh-view-on-change.operator';
 
 import { ChatService } from './chat.service';
-import { MyComponentComponent } from './sub-component/sub-component.component';
+import { SubComponent } from './sub-component/sub.component';
 
 
 const module = {
   components: [
-    MyComponentComponent
+    SubComponent
   ],
   directives: [
     NgForOf,
