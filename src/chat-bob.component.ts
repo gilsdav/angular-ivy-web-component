@@ -16,7 +16,7 @@ import { CustomAsyncPipe } from './utils/custom-async.pipe';
 import { refreshViewOnChanges } from './utils/refresh-view-on-change.operator';
 
 import { ChatService } from './chat.service';
-import { MyComponentComponent } from './my-component/my-component.component';
+import { MyComponentComponent } from './sub-component/sub-component.component';
 
 
 const module = {
@@ -43,7 +43,7 @@ const module = {
 
 
 @Component({
-  selector: 'app-chat-bob',
+  selector: 'chat-bob',
   templateUrl: './chat-bob.component.html',
   styleUrls: ['./chat-bob.component.css'],
   encapsulation: ViewEncapsulation.ShadowDom,

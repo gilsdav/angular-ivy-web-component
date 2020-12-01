@@ -4,9 +4,9 @@ import { takeUntil } from 'rxjs/operators';
 import { ChatService } from '../chat.service';
 
 @Component({
-  selector: 'app-my-component',
-  templateUrl: './my-component.component.html',
-  styleUrls: ['./my-component.component.scss'],
+  selector: 'chat-sub-component',
+  templateUrl: './sub-component.component.html',
+  styleUrls: ['./sub-component.component.scss'],
   encapsulation: ViewEncapsulation.ShadowDom
 })
 export class MyComponentComponent implements OnInit, OnChanges, OnDestroy {
