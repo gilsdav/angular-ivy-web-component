@@ -1,6 +1,5 @@
-import { Pipe, PipeTransform, ChangeDetectorRef, ɵdetectChanges as detectChanges, ElementRef } from '@angular/core';
+import { Pipe, PipeTransform, ChangeDetectorRef } from '@angular/core';
 import { AsyncPipe } from '@angular/common';
-import { AppRef } from './app-ref';
 
 @Pipe({
   name: 'async',
@@ -8,18 +7,21 @@ import { AppRef } from './app-ref';
 })
 export class CustomAsyncPipe extends AsyncPipe implements PipeTransform {
 
-  constructor(ref: ChangeDetectorRef) {
+  constructor(private ref: ChangeDetectorRef) {
     super(ref);
+
     // @ts-ignore
-    this._updateLatestValue = (async: any, value: any) => {
+    // tslint:disable-next-line: variable-name
+    this._updateLatestValue = (async: any, value: any): void => {
       // @ts-ignore
       super._updateLatestValue(async, value);
       // @ts-ignore
       if (async === this._obj) {
         console.log('_updateLatestValue');
-        detectChanges(AppRef.ref);
+        this.ref.detectChanges();
       }
     };
+
   }
 
 }

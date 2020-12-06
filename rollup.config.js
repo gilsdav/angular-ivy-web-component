@@ -4,7 +4,7 @@ import { ngcPlugin } from 'rollup-plugin-ngc'
 import { terser } from 'rollup-plugin-terser'
 
 export default {
-  input: './src/chat-bob.component.ts',
+  input: './src/chat-bob.ts',
   manualChunks(id) {
     if (id.includes('node_modules')) return 'vendor'
   },
