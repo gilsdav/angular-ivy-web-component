@@ -2,6 +2,7 @@ import resolve from '@rollup/plugin-node-resolve'
 import filesize from 'rollup-plugin-filesize'
 import { ngcPlugin } from 'rollup-plugin-ngc'
 import { terser } from 'rollup-plugin-terser'
+import del from 'rollup-plugin-delete'
 
 export default {
   input: './src/chat-bob.ts',
@@ -9,6 +10,7 @@ export default {
     if (id.includes('node_modules')) return 'vendor'
   },
   plugins: [
+    del({ targets: 'dist/*' }),
     ngcPlugin({
       rootDir: './src'
     }),

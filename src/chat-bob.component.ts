@@ -33,8 +33,8 @@ const module = {
   ],
   pipes: [
     JsonPipe,
-    AsyncPipe
-    // CustomAsyncPipe
+    // AsyncPipe
+    CustomAsyncPipe
   ],
   providers: [
     FormBuilder
@@ -87,7 +87,7 @@ export class ChatBobComponent implements OnInit, OnChanges {
 
 }
 
-// renderCustomElement(ChatBobComponent, {
-//   directives: [...module.directives, ...module.components],
-//   pipes: module.pipes
-// });
+renderCustomElement(ChatBobComponent, {
+  directives: [...module.directives, ...module.components],
+  pipes: module.pipes
+});
